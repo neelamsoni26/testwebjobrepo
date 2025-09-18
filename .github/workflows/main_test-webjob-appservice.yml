@@ -29,7 +29,11 @@ jobs:
           python -m venv venv
           source venv/bin/activate
       
-      
+      # Zip only the webjob folder
+      - name: Zip WebJob files
+        run: |
+          cd webjob
+          zip -r ../webjob.zip App_Data
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -59,3 +63,4 @@ jobs:
           slot-name: 'Production'
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5858E5894C88408DA304B34338E4B805 }}
+
