@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: webjob-artifact
-          path: ./webjob.zip
+          path: ./webjob.zip 
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,3 +54,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5858E5894C88408DA304B34338E4B805 }}
           package: ./webjob.zip
+
