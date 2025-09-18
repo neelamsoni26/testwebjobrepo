@@ -33,6 +33,7 @@ jobs:
       - name: Zip WebJob files
         run: |
           zip -r ../webjob.zip App_Data
+          cd ..
           
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -59,6 +60,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: python-app
+          path: .
       
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
@@ -69,6 +71,7 @@ jobs:
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5858E5894C88408DA304B34338E4B805 }}
           package: ./webjob.zip
+
 
 
 
