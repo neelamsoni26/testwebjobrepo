@@ -70,7 +70,8 @@ jobs:
           slot-name: 'Production'
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5858E5894C88408DA304B34338E4B805 }}
-          package: ./webjob.zip
+          package: webjob.zip
+
 
 
 
