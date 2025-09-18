@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: python-webjob
-          path: ./webjob.zip
+          path: webjob.zip
           
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -71,6 +71,7 @@ jobs:
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5858E5894C88408DA304B34338E4B805 }}
           package: webjob.zip
+
 
 
 
