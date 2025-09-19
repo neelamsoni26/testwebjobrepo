@@ -25,7 +25,7 @@ jobs:
           cd ..
       
       - name: Verify zip file created
-        run: ls -lh
+        run: ls -lh 
 
       - name: Upload WebJob artifact
         uses: actions/upload-artifact@v4
@@ -54,4 +54,5 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5858E5894C88408DA304B34338E4B805 }}
           package: ./webjob.zip
+
 
