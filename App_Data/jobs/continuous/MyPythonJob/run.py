@@ -1,1 +1,1 @@
-print('Hello from WebJob')
+print('Hello from WebJobs')
