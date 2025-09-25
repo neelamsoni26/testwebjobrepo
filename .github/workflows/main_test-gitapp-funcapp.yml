@@ -36,7 +36,7 @@ jobs:
         with:
           name: python-app
           path: |
-            App_Data/**
+            testwebjobrepo
             !venv/
             !.github/
 
@@ -69,6 +69,7 @@ jobs:
           package: App_Data
 
           
+
 
 
 
