@@ -31,17 +31,16 @@ jobs:
           python -m venv venv
           source venv/bin/activate
 
-      # Optional: Add testing steps here if needed
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
 
-      - name: Zip WebJob folder
-        run: |
-          zip -r webjob.zip App_Data/jobs/continuous/MyPythonJob
-
-      - name: Upload WebJob artifact
+      - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
-          name: python-webjob
-          path: webjob.zip
+          name: python-app
+          path: |
+            release.zip
+            !venv/
 
   deploy:
     runs-on: ubuntu-latest
@@ -52,11 +51,13 @@ jobs:
 
     steps:
       
-      - name: Download WebJob artifact
+      - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: python-webjob
+          name: python-app
 
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -71,9 +72,9 @@ jobs:
         with:
           app-name: 'test-gitapp-funcapp'
           slot-name: 'Production'
-          package: webjob.zip
 
           
+
 
 
 
