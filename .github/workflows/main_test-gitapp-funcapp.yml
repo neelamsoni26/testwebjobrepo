@@ -35,7 +35,6 @@ jobs:
 
       - name: Zip WebJob folder
         run: |
-          cd testwebjobrepo
           zip -r webjob.zip App_Data/jobs/continuous/MyPythonJob
 
       - name: Upload WebJob artifact
@@ -75,6 +74,7 @@ jobs:
           package: webjob.zip
 
           
+
 
 
 
