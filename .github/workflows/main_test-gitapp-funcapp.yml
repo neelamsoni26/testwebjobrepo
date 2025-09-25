@@ -42,7 +42,7 @@ jobs:
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E13D8FFB31DD4184B6E4B09B72C7B578 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9FA46B3591594E73BBE6689858B8E816 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_73253819A0484EFDA17763D3FD8A240A }
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_73253819A0484EFDA17763D3FD8A240A }}
 
       - name: 'Deploy WebJob to Azure App Service'
         uses: azure/webapps-deploy@v3
@@ -56,6 +56,7 @@ jobs:
 
 
           
+
 
 
 
