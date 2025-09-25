@@ -39,7 +39,7 @@ jobs:
         with:
           name: python-app
           path: |
-            release.zip
+            .
             !venv/
 
   deploy:
@@ -63,10 +63,11 @@ jobs:
           az webapp deployment source config-zip \
             --resource-group test-VScode-rg \
             --name test-gitapp-funcapp \
-            --src release.zip
+            --src python-app.zip
 
 
           
+
 
 
 
