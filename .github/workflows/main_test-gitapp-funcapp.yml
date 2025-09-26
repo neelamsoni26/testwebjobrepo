@@ -44,10 +44,11 @@ jobs:
 
       - name: Deploy WebJob with CLI
         run: |
-            az webapp deploy --resource-group 'test-VScode-rg' --name 'test-gitapp-funcapp' --src-path /home/runner/work/testwebjobrepo/testwebjobrepo/webjob.zip
+            az webapp deployment github-actions add --repo "githubUser/githubRepo" -g test-VScode-rg -n test-gitapp-funcapp --login-with-github
 
 
           
+
 
 
 
