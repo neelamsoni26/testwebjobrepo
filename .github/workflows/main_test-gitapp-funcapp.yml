@@ -60,10 +60,12 @@ jobs:
         with:
           app-name: 'test-gitapp-funcapp' 
           slot-name: 'Production'
+          package: release.zip
             
 
 
           
+
 
 
 
