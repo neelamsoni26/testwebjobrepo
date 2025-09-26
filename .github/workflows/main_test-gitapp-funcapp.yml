@@ -42,18 +42,17 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FDDBD8E3B5354471871D6C11ABCC2A43 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C925989C39504847B6D6D153507DF7BC }}
 
-      - name: Deploy WebJob with CLI
-        run: |
-            
-            az webapp deploy \
-            --resource-group test-VScode-rg \
-            --name test-gitapp-funcapp \
-            --src-path webjob.zip  \
-            --type zip
+      - name: Deploy WebJob using WebApps-Deploy Action
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'test-gitapp-funcapp'
+          resource-group-name: 'test-VScode-rg'
+          package: 'webjob.zip'
             
 
 
           
+
 
 
 
