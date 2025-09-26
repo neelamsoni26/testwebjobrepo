@@ -28,7 +28,7 @@ jobs:
       - name: Create clean zip (rooted at App_Data)
         run: |
           cd $GITHUB_WORKSPACE
-          zip -r webjob.zip .
+          zip -r webjob.zip App_Data
 
       - name: List repo contents
         run: |
@@ -52,6 +52,7 @@ jobs:
 
 
           
+
 
 
 
