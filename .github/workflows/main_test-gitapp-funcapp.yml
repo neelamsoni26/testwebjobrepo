@@ -21,13 +21,9 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Prepare WebJob package
+      - name: Create clean zip (rooted at App_Data)
         run: |
-          mkdir package
-          cp -r App_Data package/
-          cd package
-          zip -r ../webjob.zip .
-          cd ..
+          zip -r webjob.zip App_Data
           
       - name: Login to Azure
         uses: azure/login@v2
@@ -45,6 +41,7 @@ jobs:
 
 
           
+
 
 
 
