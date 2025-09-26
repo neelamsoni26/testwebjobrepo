@@ -42,6 +42,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required to fetch the OIDC token
+      contents: read  # Required to check out code or read artifacts
     steps:
       
       - name: Login to Azure
@@ -61,6 +64,7 @@ jobs:
 
 
           
+
 
 
 
