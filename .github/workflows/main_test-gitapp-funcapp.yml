@@ -44,10 +44,11 @@ jobs:
 
       - name: Deploy WebJob with CLI
         run: |
-            az webapp deployment github-actions add --repo "githubUser/githubRepo" -g test-VScode-rg -n test-gitapp-funcapp --login-with-github
+            az webapp deployment github-actions add --repo "neelamsoni26/testwebjobrepo" -g test-VScode-rg -n test-gitapp-funcapp --login-with-github
 
 
           
+
 
 
 
