@@ -27,7 +27,7 @@ jobs:
 
       - name: Create clean zip (rooted at App_Data)
         run: |
-          cd /home/runner/work/testwebjobrepo
+          cd /home/runner/work/testwebjobrepo/testwebjobrepo
           zip -r webjob.zip .
 
       - name: List repo contents
@@ -44,10 +44,11 @@ jobs:
 
       - name: Deploy WebJob with CLI
         run: |
-            az webapp deploy --resource-group 'test-VScode-rg' --name 'test-gitapp-funcapp' --src-path webjob.zip
+            az webapp deploy --resource-group 'test-VScode-rg' --name 'test-gitapp-funcapp' --src-path /home/runner/work/testwebjobrepo/testwebjobrepo/webjob.zip
 
 
           
+
 
 
 
