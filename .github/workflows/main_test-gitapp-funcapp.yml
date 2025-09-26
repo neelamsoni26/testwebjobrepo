@@ -27,7 +27,13 @@ jobs:
 
       - name: Create clean zip (rooted at App_Data)
         run: |
-          zip -r webjob.zip App_Data
+          cd testwebjobrepo
+          zip -r ../webjob.zip App_Data
+
+      - name: List repo contents
+        run: |
+          pwd
+          ls -R
           
       - name: Login to Azure
         uses: azure/login@v2
@@ -42,6 +48,7 @@ jobs:
 
 
           
+
 
 
 
