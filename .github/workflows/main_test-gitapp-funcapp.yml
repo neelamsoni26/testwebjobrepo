@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Deploy Python WebJob using Azure CLI - test-gitapp-funcapp
+name: Build and deploy Python app to Azure Web App - mysite
 
 on:
   push:
@@ -11,29 +11,45 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:       
-      id-token: write
-      contents: read
-      
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python version
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Create clean zip (rooted at App_Data)
+      - name: Create and start virtual environment
         run: |
-          cd $GITHUB_WORKSPACE
-          zip -r webjob.zip App_Data
+          python -m venv venv
+          source venv/bin/activate
+        
+      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      - name: List repo contents
-        run: |
-          pwd
-          ls -R
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
+
+      - name: Upload artifact for deployment jobs
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-app
+          path: |
+            release.zip
+            !venv/
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: python-app
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
           
       - name: Login to Azure
         uses: azure/login@v2
@@ -47,11 +63,12 @@ jobs:
         with:
           app-name: 'test-gitapp-funcapp'
           resource-group-name: 'test-VScode-rg'
-          package: 'webjob.zip'
+          package: 'release.zip'
             
 
 
           
+
 
 
 
