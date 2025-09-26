@@ -48,12 +48,13 @@ jobs:
             az webapp deploy \
             --resource-group test-VScode-rg \
             --name test-gitapp-funcapp \
-            --src-path App_Data  \
+            --src-path /home/runner/work/testwebjobrepo/testwebjobrepo  \
             --type static
             
 
 
           
+
 
 
 
