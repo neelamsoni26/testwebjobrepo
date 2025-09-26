@@ -38,13 +38,11 @@ jobs:
 
       - name: Deploy WebJob with CLI
         run: |
-          az webapp deployment source config-zip \
-            --resource-group test-VScode-rg \
-            --name test-gitapp-funcapp \
-            --src webjob.zip
+            az webapp deploy --resource-group test-VScode-rg > --name test-gitapp-funcapp --src-path webjob.zip
 
 
           
+
 
 
 
